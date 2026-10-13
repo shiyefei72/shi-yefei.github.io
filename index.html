@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>师烨飞 · Shi Yefei | 个人主页</title>
+<meta name="description" content="师烨飞（Shi Yefei）个人主页：中国地震局地震预测研究所 / 国科大地球物理学硕士。主要研究方向：基于谱元法与人工智能的强地面运动模拟、地形放大效应与遥感验证。" />
+<meta name="theme-color" content="#0b1b33" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4f7fb;
+    --bg-soft: #eaf0f8;
+    --surface: #ffffff;
+    --ink: #14202e;
+    --ink-soft: #2c3b4d;
+    --muted: #64748b;
+    --line: #e2e9f2;
+    --brand: #0e63d6;
+    --brand-deep: #0a3f8f;
+    --brand-2: #0fb5ad;
+    --brand-grad: linear-gradient(135deg, #0e63d6 0%, #0fb5ad 100%);
+    --gold: #b4862b;
+    --shadow-sm: 0 2px 10px rgba(16, 40, 75, .05);
+    --shadow: 0 10px 34px rgba(16, 40, 75, .10);
+    --shadow-lg: 0 22px 60px rgba(16, 40, 75, .16);
+    --radius: 18px;
+    --maxw: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--brand); text-decoration: none; transition: color .2s ease; }
+  a:hover { color: var(--brand-deep); }
+  .cn-serif { font-family: "Noto Serif SC", "Songti SC", serif; }
+  ::selection { background: #cfe1ff; }
+
+  /* ================= Nav ================= */
+  header.nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.78);
+    backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid rgba(226,233,242,.9);
+    transition: box-shadow .3s ease;
+  }
+  header.nav.scrolled { box-shadow: 0 6px 24px rgba(16,40,75,.07); }
+  .nav-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { font-weight: 800; letter-spacing: .3px; font-size: 16px; color: var(--ink); display: flex; align-items: center; gap: 9px; }
+  .brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-grad); display: inline-block; }
+  .brand span { color: var(--brand); font-weight: 600; }
+  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--ink-soft); font-size: 14px; font-weight: 500;
+    padding: 7px 13px; border-radius: 999px;
+    transition: background .2s ease, color .2s ease;
+  }
+  .nav-links a:hover { color: var(--brand); background: #eef4ff; }
+  .menu-btn { display: none; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 7px 11px; cursor: pointer; font-size: 16px; color: var(--ink); }
+
+  /* ================= Hero ================= */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(1200px 600px at 82% -8%, rgba(15,181,173,.42), transparent 60%),
+      radial-gradient(1000px 520px at 12% 8%, rgba(14,99,214,.55), transparent 62%),
+      linear-gradient(140deg, #0a2444 0%, #0b3566 46%, #0d4f78 100%);
+    color: #fff;
+    padding: 78px 24px 92px;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(circle at 50% 0%, #000 0%, transparent 72%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: var(--maxw); margin: 0 auto;
+    display: grid; grid-template-columns: 176px 1fr; gap: 42px; align-items: center;
+  }
+  .avatar {
+    width: 176px; height: 176px; border-radius: 26px;
+    background: linear-gradient(150deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+    border: 2px solid rgba(255,255,255,.42);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 66px; font-weight: 800; letter-spacing: 2px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.35);
+    backdrop-filter: blur(6px);
+    /* 使用真实头像：取消下方三行注释，并把 avatar.jpg 放到同目录
+       background: url('avatar.jpg') center/cover no-repeat;
+       border-color: rgba(255,255,255,.7);
+       */
+  }
+  .hero .eyebrow { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #a9d4ff; font-weight: 600; }
+  .hero h1 { margin: 8px 0 2px; font-size: 42px; line-height: 1.15; letter-spacing: .5px; font-weight: 800; }
+  .hero .en { font-size: 15px; letter-spacing: 2.5px; color: #bcd7f5; text-transform: uppercase; }
+  .hero .tag {
+    margin-top: 16px; font-size: 16px; font-weight: 500; color: #eaf3ff;
+    display: inline-flex; align-items: center; gap: 9px; flex-wrap: wrap;
+  }
+  .hero .tag .sep { width: 5px; height: 5px; border-radius: 50%; background: #6fd6cf; display: inline-block; }
+  .hero .meta { margin-top: 14px; font-size: 13.5px; color: #c5d9ee; line-height: 1.9; }
+  .hero .links { margin-top: 24px; display: flex; gap: 11px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 10px 19px; border-radius: 999px;
+    background: rgba(255,255,255,.13); color: #fff;
+    border: 1px solid rgba(255,255,255,.42);
+    font-size: 13.5px; font-weight: 600; letter-spacing: .2px;
+    transition: transform .18s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover { background: rgba(255,255,255,.26); color: #fff; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
+  .btn.primary { background: #fff; color: var(--brand-deep); border-color: #fff; }
+  .btn.primary:hover { background: #eaf3ff; }
+
+  /* ================= Layout ================= */
+  main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px 72px; }
+  section { padding: 58px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 84px; }
+  section:last-of-type { border-bottom: none; }
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .sec-head .bar { width: 5px; height: 30px; border-radius: 4px; background: var(--brand-grad); }
+  .sec-head h2 { margin: 0; font-size: 25px; font-weight: 800; letter-spacing: .3px; }
+  .sec-head .en { color: var(--muted); font-size: 12.5px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; margin-left: 2px; }
+
+  /* ================= Highlight ================= */
+  .highlight {
+    position: relative;
+    background: linear-gradient(135deg, #eef5ff 0%, #e7fbf9 100%);
+    border: 1px solid #d3e5ff; border-radius: var(--radius);
+    padding: 26px 30px 26px 32px; overflow: hidden;
+  }
+  .highlight::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: var(--brand-grad);
+  }
+  .highlight .kicker { color: var(--brand); font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+  .highlight h3 { margin: 9px 0 11px; font-size: 22px; line-height: 1.4; color: var(--ink); font-weight: 700; }
+  .highlight p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+  /* ================= Cards ================= */
+  .grid { display: grid; gap: 18px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #cfe0f8; }
+  .card h3 { margin: 0 0 7px; font-size: 17px; font-weight: 700; color: var(--ink); }
+  .card .sub { color: var(--brand); font-size: 12.5px; font-weight: 600; margin-bottom: 10px; letter-spacing: .2px; }
+  .card p { margin: 8px 0 0; font-size: 14.5px; color: var(--ink-soft); }
+  .card ul.clean { margin-top: 9px; }
+  .card .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 9px; margin-bottom: 10px;
+    background: #eef4ff; color: var(--brand); font-weight: 800; font-size: 14px;
+  }
+
+  /* ================= Timeline ================= */
+  .timeline { border-left: 2px solid var(--line); margin-left: 10px; padding-left: 26px; }
+  .tl-item { position: relative; padding-bottom: 30px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -34px; top: 5px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--brand-grad); border: 3px solid #fff; box-shadow: 0 0 0 2px #bcd7f5;
+  }
+  .tl-item .when { color: var(--brand); font-size: 13px; font-weight: 700; letter-spacing: .3px; }
+  .tl-item h3 { margin: 5px 0 3px; font-size: 17.5px; font-weight: 700; }
+  .tl-item .org { color: var(--muted); font-size: 14px; }
+  .tl-item p { font-size: 14px; color: var(--ink-soft); margin: 8px 0 0; }
+
+  /* ================= Chips ================= */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    background: #eef4ff; color: var(--brand); border: 1px solid #d7e6ff;
+    padding: 7px 15px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+    transition: transform .18s ease;
+  }
+  .chip:hover { transform: translateY(-2px); }
+  .chip.alt { background: #e6faf8; color: #0d8a85; border-color: #c3efec; }
+
+  /* ================= Publications ================= */
+  .pub {
+    position: relative;
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--brand);
+    border-radius: 14px; padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow-sm);
+  }
+  .pub .title { font-weight: 700; font-size: 15.5px; color: var(--ink); }
+  .pub .venue { color: var(--muted); font-size: 13.8px; margin-top: 6px; }
+  .pub .badge {
+    display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .5px;
+    color: #0d8a85; background: #e6faf8; border: 1px solid #c3efec;
+    padding: 2px 9px; border-radius: 999px; margin-bottom: 8px;
+  }
+  ul.clean { margin: 0; padding-left: 20px; }
+  ul.clean li { margin: 7px 0; font-size: 14.5px; color: var(--ink-soft); }
+  ul.clean li::marker { color: var(--brand); }
+
+  .skills-group { margin-bottom: 18px; }
+  .skills-group:last-child { margin-bottom: 0; }
+  .skills-group .label { font-weight: 700; font-size: 13px; margin-bottom: 10px; color: var(--muted); letter-spacing: .8px; text-transform: uppercase; }
+
+  .award-year { font-weight: 800; color: var(--brand); margin-right: 9px; }
+
+  /* ================= Footer ================= */
+  footer {
+    text-align: center; padding: 36px 24px 56px;
+    color: var(--muted); font-size: 13px; line-height: 1.9;
+    border-top: 1px solid var(--line); background: #fff;
+  }
+  footer .heart { color: #e2557b; }
+
+  /* ================= Reveal animation ================= */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .reveal.show { opacity: 1; transform: none; }
+
+  /* ================= Back to top ================= */
+  #toTop {
+    position: fixed; right: 24px; bottom: 24px; z-index: 90;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--brand-grad); color: #fff; border: none; cursor: pointer;
+    font-size: 18px; box-shadow: var(--shadow); opacity: 0; pointer-events: none;
+    transition: opacity .3s ease, transform .2s ease;
+  }
+  #toTop.show { opacity: 1; pointer-events: auto; }
+  #toTop:hover { transform: translateY(-3px); }
+
+  /* ================= Responsive ================= */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 26px; text-align: center; justify-items: center; }
+    .hero h1 { font-size: 34px; }
+    .avatar { width: 132px; height: 132px; border-radius: 22px; font-size: 50px; }
+    .hero .links { justify-content: center; }
+    .g3 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .menu-btn { display: inline-block; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 60px; right: 18px; min-width: 168px;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 14px; padding: 10px; box-shadow: var(--shadow-lg);
+    }
+    .nav-links.open a { padding: 9px 14px; }
+    .g2 { grid-template-columns: 1fr; }
+    section { padding: 44px 0; }
+    .hero { padding: 56px 20px 66px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>师烨飞 <span>· Shi Yefei</span></div>
+    <button class="menu-btn" aria-label="菜单" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <nav class="nav-links" id="navlinks">
+      <a href="#about" onclick="closeMenu()">简介</a>
+      <a href="#research" onclick="closeMenu()">研究方向</a>
+      <a href="#education" onclick="closeMenu()">教育</a>
+      <a href="#publications" onclick="closeMenu()">成果</a>
+      <a href="#projects" onclick="closeMenu()">项目</a>
+      <a href="#awards" onclick="closeMenu()">荣誉</a>
+      <a href="#skills" onclick="closeMenu()">技能</a>
+      <a href="#contact" onclick="closeMenu()">联系</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="avatar cn-serif">师</div>
+    <div class="hero-text">
+      <div class="eyebrow">Geophysics · Seismic Ground Motion</div>
+      <h1 class="cn-serif">师烨飞</h1>
+      <div class="en">Shi Yefei</div>
+      <div class="tag">
+        <span>地球物理学硕士</span>
+        <span class="sep"></span>
+        <span>强地面运动模拟与地震动场预测</span>
+      </div>
+      <div class="meta">
+        中国科学院大学 地球与行星科学学院 · 中国地震局地震预测研究所（培养单位）<br/>
+        谱元法数值模拟（SPECFEM3D）× 人工智能 × 遥感验证 &nbsp;|&nbsp; 邮箱：yefei_shi@163.com
+      </div>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/【你的GitHub用户名】" target="_blank" rel="noopener">★ GitHub 主页</a>
+        <a class="btn" href="mailto:yefei_shi@163.com">✉ 邮箱</a>
+        <a class="btn" href="#publications">学术成果</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>个人简介</h2><span class="en">About</span></div>
+
+    <div class="highlight">
+      <div class="kicker">主要研究方向 · Primary Research</div>
+      <h3 class="cn-serif">基于谱元法与人工智能的强地面运动模拟与地形放大效应研究</h3>
+      <p>以<strong>谱元法（SPECFEM3D）</strong>三维数值模拟为核心手段，结合<strong>人工智能 / 深度学习</strong>方法，开展复杂地形条件下的<strong>强地面运动模拟与地震动场预测</strong>，并利用<strong>遥感与 GIS</strong> 手段对模拟结果进行地形放大效应的空间验证。研究工作依托国家超级计算平台完成大规模并行计算。</p>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <p>我是<strong>师烨飞</strong>，现为中国科学院大学地球与行星科学学院 2026 级硕士研究生（培养单位：<strong>中国地震局地震预测研究所</strong>），攻读<strong>地球物理学</strong>。本科毕业于<strong>郑州大学地球科学与技术学院遥感科学与技术专业</strong>。</p>
+      <p>我的学术路径是一条"<strong>遥感 → 地球物理</strong>"的交叉路线：本科阶段扎根遥感与地理信息，在激光雷达、高光谱、无人机遥感与多源时空数据融合方向积累了扎实的工程与科研经验；硕士阶段转向地球物理与地震学，聚焦强地面运动的数值模拟与智能预测。这种跨学科背景让我既能动手做外业数据采集与遥感处理，也能开展物理建模、大规模数值计算与机器学习建模。</p>
+      <p>我相信<strong>物理机制 + 数据驱动</strong>的结合是地震动预测的前沿方向——用谱元法刻画波的传播物理过程，用机器学习加速预测与反演，再用遥感数据做独立验证。</p>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>研究方向</h2><span class="en">Research Interests</span></div>
+
+    <div class="grid g2" style="margin-bottom:22px;">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>强地面运动数值模拟</h3>
+        <div class="sub">Current Focus · 硕士阶段主攻</div>
+        <p>基于谱元法（SEM / SPECFEM3D）开展三维地震波传播与宽频带地震动模拟，研究震源、地壳速度结构与地形对地面运动的控制作用；在超算平台进行大规模并行计算。</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>AI 与地震动的交叉</h3>
+        <div class="sub">Current Focus · 硕士阶段主攻</div>
+        <p>探索机器学习 / 深度学习在强地面运动预测、地震动参数估计与波形生成中的应用，研究神经网络、生成模型等对地震动场的快速预测与地震预警。</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>地形放大效应与遥感验证</h3>
+        <div class="sub">Current Focus · 硕士阶段主攻</div>
+        <p>研究复杂地形对地震动的放大效应，将数值模拟结果与遥感 / GIS 空间分析、滑坡与震害分布进行交叉验证，服务于地震危险性评估。</p>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <h3>遥感与多源时空数据</h3>
+        <div class="sub">本科积累 · 持续进行</div>
+        <p>激光雷达（LiDAR）、高光谱与无人机遥感；多源时空数据融合及其在城市洪涝灾情评估、交通语义轨迹分析中的应用。</p>
+      </div>
+    </div>
+
+    <div class="chips">
+      <span class="chip">谱元法 SPECFEM3D</span>
+      <span class="chip">强地面运动模拟</span>
+      <span class="chip">地震动场预测</span>
+      <span class="chip">地形放大效应</span>
+      <span class="chip">人工智能 / 深度学习</span>
+      <span class="chip">地震危险性评估</span>
+      <span class="chip alt">激光雷达遥感</span>
+      <span class="chip alt">高光谱遥感</span>
+      <span class="chip alt">无人机遥感</span>
+      <span class="chip alt">多源数据融合</span>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>教育经历</h2><span class="en">Education</span></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="when">2026.09 – 至今</div>
+        <h3>中国科学院大学 · 地球与行星科学学院</h3>
+        <div class="org">硕士 · 地球物理学（培养单位：中国地震局地震预测研究所）</div>
+        <p>研究方向：基于谱元法与人工智能的强地面运动模拟、地形放大效应与遥感验证。</p>
+      </div>
+      <div class="tl-item">
+        <div class="when">2022.09 – 2026.06</div>
+        <h3>郑州大学 · 地球科学与技术学院</h3>
+        <div class="org">本科 · 遥感科学与技术（地理科学类）｜曾任学习委员，获"优秀学生干部"</div>
+        <p>主修课程：定量遥感(88.1)、空间数据库(87)、微波遥感(87)、数据结构与算法(85)、地理信息系统(83)、遥感技术(80)，以及高光谱遥感、激光与热红外遥感、大气与海洋遥感、GNSS、数字摄影测量、机器学习等。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>学术成果</h2><span class="en">Publications &amp; Software</span></div>
+    <h3 style="font-size:15px;margin:0 0 12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">论文 · SCI</h3>
+    <div class="pub">
+      <span class="badge">SCI · ISPRS IJGI</span>
+      <div class="title">CTSTSpace: A Framework for Behavior Pattern Recognition and Perturbation Analysis Based on Campus Traffic Semantic Trajectories</div>
+      <div class="venue">Lin L., Jin M., Chen Z., Men W., <strong>Shi Y.</strong>, Wang G. (2026). <em>ISPRS International Journal of Geo-Information</em>, 15(3): 127. &nbsp;|&nbsp; <a href="https://doi.org/10.3390/ijgi15030127" target="_blank" rel="noopener">DOI: 10.3390/ijgi15030127</a></div>
+    </div>
+    <h3 style="font-size:15px;margin:24px 0 12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">软件著作权</h3>
+    <ul class="clean">
+      <li>基于多源数据的城市交通拥堵治理与信号灯设计系统 V1.0（第一完成人，登记号 2025SR0878541）</li>
+      <li>基于社交媒体网络数据时空信息融合的洪涝灾情情感分析系统 V1.0（除导师外第一完成人，登记号 2025SR0430796）</li>
+    </ul>
+    <h3 style="font-size:15px;margin:24px 0 12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">在研 / 进行中</h3>
+    <ul class="clean">
+      <li>地形放大效应的数值模拟与遥感验证（谱元法 + 遥感交叉验证，硕士阶段课题）</li>
+      <li>AI 在强地面运动领域的应用（深度学习地震动预测 / 波形生成方向文献与建模）</li>
+      <li>城市应急避难场所选址优化（基于 VGAE-RF 深度学习选址模型的小论文）</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>科研与项目</h2><span class="en">Projects</span></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>地形放大效应的数值模拟与遥感验证</h3>
+        <div class="sub">硕士阶段课题 · 在研（2026 – ）</div>
+        <p>以谱元法（SPECFEM3D）模拟复杂地形下的地震波传播与地面运动，量化地形放大效应，并结合遥感与 GIS 空间分析、震害/滑坡分布进行独立验证，服务于地震危险性评估。</p>
+      </div>
+      <div class="card">
+        <h3>AI 在强地面运动领域的应用</h3>
+        <div class="sub">方向调研与建模 · 在研（2026 – ）</div>
+        <p>系统调研机器学习 / 深度学习在强地面运动预测、地震动参数估计与波形生成中的应用（含 GMPE、生成式模型、地震预警序列模型等），并开展建模仿真实验。</p>
+      </div>
+      <div class="card">
+        <h3>城市应急避难场所选址优化</h3>
+        <div class="sub">小论文 · 在研</div>
+        <p>基于郑州多源地理数据（路网、建筑、医院、积水点、坡度、河网密度等），利用图神经网络（VGAE-RF）与多准则决策方法开展应急避难场所选址规划与预测。</p>
+      </div>
+      <div class="card">
+        <h3>城市交通拥堵治理与信号灯设计</h3>
+        <div class="sub">国家级大创项目 · 主持 · 已结项（2024.05 – 2025.04）</div>
+        <p>基于多源数据融合与智能算法，设计城市交通拥堵治理与信号灯智能调控系统（六大功能），并用 HTML/CSS/JS 制作成果展示网页。产出软著 1 项。</p>
+      </div>
+      <div class="card">
+        <h3>城市洪涝灾情近实时评估</h3>
+        <div class="sub">河南省自然科学基金项目 · 参与（2024.07 – 2025.05）</div>
+        <p>承担基于社交媒体时空信息融合的洪涝灾情情感分析模块：信息抽取、结构化处理、地名—坐标匹配，并负责算法调试与软著材料撰写。产出软著 1 项。</p>
+      </div>
+      <div class="card">
+        <h3>水库除险加固改造工程研究</h3>
+        <div class="sub">横向项目（南京市六合区）· 参与（2025.06 – 2025.09）</div>
+        <p>参与无人机实地点云与 RTK 数据采集及处理，将无人机数据转化为 DEM 与三维场景，负责外业采集、格式转换与质量评估。</p>
+      </div>
+      <div class="card">
+        <h3>郑州市城市道路脆弱性研究</h3>
+        <div class="sub">科研项目 · 参与（2024.08 – 2024.12）</div>
+        <p>基于社交媒体信息提取洪水场景积水点，进行道路脆弱性等级量化与地图生成，产出郑州市道路网络洪涝风险等级图。</p>
+      </div>
+      <div class="card">
+        <h3>洪水—路网—供应链韧性研究</h3>
+        <div class="sub">科研探索 · 参与</div>
+        <p>围绕城市洪涝灾害链，研究洪水对路网与供应链韧性的影响及应急响应优化，产出文献综述与建模思路。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>荣誉与竞赛</h2><span class="en">Awards &amp; Competitions</span></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>奖学金与荣誉称号</h3>
+        <ul class="clean">
+          <li><span class="award-year">2025</span>国家励志奖学金（河南省教育厅）</li>
+          <li><span class="award-year">2024</span>郑州大学优秀学生奖学金 二等奖</li>
+          <li><span class="award-year">2025</span>郑州大学优秀学生干部</li>
+          <li><span class="award-year">2026</span>郑州大学二星级志愿者</li>
+          <li><span class="award-year">2025</span>郑州大学一星级志愿者</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>学科竞赛</h3>
+        <ul class="clean">
+          <li><span class="award-year">2025</span>美国大学生数学建模竞赛 Honourable Mention（国际二等奖）</li>
+          <li><span class="award-year">2024</span>全国大学生数学建模竞赛 省级二等奖</li>
+          <li><span class="award-year">2025</span>电工杯 / 数维杯 / 五一数学建模 三等奖 等</li>
+          <li><span class="award-year">2024</span>数学中国建模国际赛（小美赛）Honourable Mention</li>
+          <li><span class="award-year">2023</span>郑州大学思政课实践活动 一等奖</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px;">
+      <h3>社会实践与志愿服务</h3>
+      <ul class="clean">
+        <li>郑州大学 2023 年暑期"三下乡"社会实践 一等奖；2023 年寒假"三下乡" 三等奖；2024 年暑期"三下乡" 一等奖 ×2</li>
+        <li>2025 年中国国际大学生创新大赛 志愿者；校园马拉松、荧光夜跑等体育活动完赛</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>技能特长</h2><span class="en">Skills</span></div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="skills-group"><div class="label">编程与开发</div><div class="chips">
+          <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">C++</span><span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">LaTeX</span>
+        </div></div>
+        <div class="skills-group"><div class="label">数值模拟与计算</div><div class="chips">
+          <span class="chip">SPECFEM3D 谱元法</span><span class="chip">Linux / Ubuntu</span><span class="chip">超算并行计算</span><span class="chip">机器学习 / 深度学习</span>
+        </div></div>
+      </div>
+      <div class="card">
+        <div class="skills-group"><div class="label">GIS 与遥感</div><div class="chips">
+          <span class="chip">ENVI</span><span class="chip">SNAP</span><span class="chip">Google Earth Engine</span><span class="chip">ArcGIS / ArcGIS Pro</span><span class="chip">QGIS</span><span class="chip">大疆智图</span>
+        </div></div>
+        <div class="skills-group"><div class="label">外业与设备</div><div class="chips">
+          <span class="chip">无人机操作与数据处理</span><span class="chip">全站仪</span><span class="chip">水准仪</span><span class="chip">RTK 采集</span><span class="chip">GNSS</span><span class="chip">车辆驾驶</span>
+        </div></div>
+        <div class="skills-group"><div class="label">语言与其他</div><div class="chips">
+          <span class="chip">英语 CET-4</span><span class="chip">WPS / Office 排版</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+    <div class="sec-head"><div class="bar"></div><h2>联系方式</h2><span class="en">Contact</span></div>
+    <div class="card">
+      <ul class="clean">
+        <li>📧 邮箱：<a href="mailto:yefei_shi@163.com">yefei_shi@163.com</a></li>
+        <li>💻 GitHub：<a href="https://github.com/【你的GitHub用户名】" target="_blank" rel="noopener">github.com/【你的GitHub用户名】</a>（请替换为你的用户名）</li>
+        <li>📍 所在地：山西省临汾市（籍贯）／ 北京（求学）</li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;">出于隐私考虑，本页未公开手机号；如需交流请通过邮箱或 GitHub 联系。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> 师烨飞 · Shi Yefei &nbsp;|&nbsp; 由 GitHub Pages 托管<br/>
+  以 <span class="heart">♥</span> 与代码构建 · 内容依据个人简历、经历与在研项目整理
+</footer>
+
+<button id="toTop" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // 年份
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 关闭移动端菜单
+  function closeMenu() { document.getElementById('navlinks').classList.remove('open'); }
+
+  // 导航栏阴影 + 回到顶部
+  const nav = document.getElementById('topnav');
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 10);
+    toTop.classList.toggle('show', y > 500);
+  });
+
+  // 滚动渐入动画
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
